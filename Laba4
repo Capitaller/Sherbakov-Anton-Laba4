@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Labaproga4
+{
+    abstract class Text
+    {
+        public string Alphavit { get; set; }
+        public string Ieroglif { get; set; }
+        public string Slovo { get; set; }
+        public int Simbol { get; set; }
+
+
+        public abstract void GetWordNumber();
+        public abstract void GetLanguage();
+    }
+    class word : Text
+    {
+        public word(string alphavit)
+        {
+            Alphavit = alphavit;
+            // Slovo = slovo;
+
+        }
+
+        public override void GetLanguage()
+        {
+            Console.WriteLine("Слово: " + Slovo + " Алфавит: " + Alphavit + "\n");
+        }
+        public override void GetWordNumber()
+        {
+
+        }
+    }
+    class rechenna : Text
+    {
+        public rechenna(int count)
+        {
+            Simbol = count;
+        }
+        public override void GetWordNumber() // реализация абстрактного метода
+        {
+            Console.WriteLine("Количество слов " + Simbol);
+        }
+        public override void GetLanguage() // реализация абстрактного метода
+        {
+
+        }
+    }
+    class ieroglif : Text
+    {
+        public ieroglif(string ieroglif)
+        {
+            Ieroglif = ieroglif;
+
+        }
+        public override void GetLanguage()
+        {
+            Console.WriteLine("Иероглиф: " + Slovo + " Язык: " + Ieroglif + "\n");
+        }
+        public override void GetWordNumber()
+        {
+
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int count;
+            List<Text> words = new List<Text>();
+            words.Add(new word("Латиница") { Slovo = "slovo1"  }); 
+            words.Add(new word("Кирилица") { Slovo = "Slovo2" });
+            words.Add(new ieroglif("Китайский") { Slovo = "Иероглиф1" });
+            words.Add(new ieroglif("Японский") { Slovo = "Иероглиф2" });
+            words.Add(new ieroglif("Корейский") { Slovo = "Иероглиф3" });
+            count = words.Count;
+            foreach (Text w in words)
+            {
+               
+                w.GetLanguage();
+            }
+            rechenna first = new rechenna(count);
+            first.GetWordNumber();
+        }
+    }
+}
