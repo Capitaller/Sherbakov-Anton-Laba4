@@ -15,8 +15,8 @@ namespace Labaproga4
         public int Simbol { get; set; }
 
 
-        public abstract void GetWordNumber();
-        public abstract void GetLanguage();
+        public abstract void GetWordNumber(); //Абстрактный метод
+        public abstract void GetLanguage(); //Абстрактный метод
     }
     class word : Text
     {
